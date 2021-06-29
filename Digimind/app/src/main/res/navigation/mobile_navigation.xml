@@ -16,5 +16,5 @@
         android:name="rojo.ader.digimind.ui.dashboard.DashboardFragment"
         android:label="@string/title_add"
         tools:layout="@layout/fragment_dashboard" />
-    
+
 </navigation>
