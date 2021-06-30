@@ -191,11 +191,15 @@
                 android:textAlignment="center"
                 android:textColor="@color/dusty_rose" />
 
-            <EditText
+            <Button
                 android:id="@+id/time"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:text="Set Time"
+                android:textAllCaps="false"
+                android:textColor="@color/gray"
+                android:textSize="16sp"
+                android:background="?android:attr/selectable"/>
 
             <Button
                 android:id="@+id/done"
