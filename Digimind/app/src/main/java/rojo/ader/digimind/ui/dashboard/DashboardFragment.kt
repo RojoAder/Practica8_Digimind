@@ -51,7 +51,7 @@ class DashboardFragment : Fragment() {
                 true
             ).show()
         }
-        
+
         return root
     }
 
