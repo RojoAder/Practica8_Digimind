@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "43231288128",
+    "project_id": "digimind-8513b",
+    "storage_bucket": "digimind-8513b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:43231288128:android:fc67ea75940206a31ff8a5",
+        "android_client_info": {
+          "package_name": "rojo.ader.digimind"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "43231288128-69m3jq3nkp4kpcppuaenviltn64no9cs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8KPSM1tfSoTfJ2dWO3XcRl5kECDjuj7U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "43231288128-69m3jq3nkp4kpcppuaenviltn64no9cs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
