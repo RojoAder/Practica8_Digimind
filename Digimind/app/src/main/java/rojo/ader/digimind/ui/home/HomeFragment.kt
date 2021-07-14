@@ -42,7 +42,7 @@ class HomeFragment : Fragment() {
         adaptador= AdaptadorTareas(root.context,tasks)
 
         val gridView = root.findViewById(R.id.reminders) as GridView
-        
+
         gridView.adapter=adaptador
         return root
     }
