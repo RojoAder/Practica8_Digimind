@@ -42,15 +42,8 @@ class HomeFragment : Fragment() {
         adaptador= AdaptadorTareas(root.context,tasks)
 
         val gridView = root.findViewById(R.id.reminders) as GridView
-
-<<<<<<< HEAD
-        //val textView: TextView = binding.textHome
-        //homeViewModel.text.observe(viewLifecycleOwner, Observer {
-          //  textView.text = it
-        //})
-=======
+        
         gridView.adapter=adaptador
->>>>>>> digimind-2
         return root
     }
 
