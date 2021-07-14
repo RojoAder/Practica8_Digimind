@@ -1,7 +1,9 @@
 package rojo.ader.digimind.ui.dashboard
 
 import android.app.TimePickerDialog
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +11,10 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.ktx.storage
 import rojo.ader.digimind.R
 import rojo.ader.digimind.Task
 import rojo.ader.digimind.databinding.FragmentDashboardBinding
@@ -21,6 +27,8 @@ class DashboardFragment : Fragment() {
 
     private lateinit var dashboardViewModel: DashboardViewModel
     private var _binding: FragmentDashboardBinding? = null
+
+    val db = Firebase.firestore
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -68,36 +76,66 @@ class DashboardFragment : Fragment() {
             var time = btn_time.text.toString()
 
             var days = ArrayList<String>()
+            var lu = false
+            var ma = false
+            var mie = false
+            var ju = false
+            var vi = false
+            var sa = false
+            var dom = false
 
-            if(checkMonday.isChecked){
+            if (checkMonday.isChecked) {
                 days.add("Monday")
+                lu=true
             }
-            if(checkTuesday.isChecked){
+            if (checkTuesday.isChecked) {
                 days.add("Tuesday")
+                ma=true
             }
-            if(checkWednesday.isChecked){
+            if (checkWednesday.isChecked) {
                 days.add("Wednesday")
+                mie=true
             }
-            if(checkThursday.isChecked){
+            if (checkThursday.isChecked) {
                 days.add("Thursday")
+                ju=true
             }
-            if(checkFriday.isChecked){
+            if (checkFriday.isChecked) {
                 days.add("Friday")
+                vi=true
             }
-            if(checkSaturday.isChecked){
+            if (checkSaturday.isChecked) {
                 days.add("Saturday")
+                sa=true
             }
-            if(checkSunday.isChecked){
+            if (checkSunday.isChecked) {
                 days.add("Sunday")
+                dom=true
             }
 
-            var task = Task(title,days,time)
+            var task = Task(title, days, time)
 
-            val homeFragment =HomeFragment()
+            val homeFragment = HomeFragment()
 
+            val tarea = hashMapOf(
+                "actividad" to title,
+                "tiempo" to time,
+                "lu" to lu,
+                "ma" to ma,
+                "mie" to mie,
+                "ju" to ju,
+                "vi" to vi,
+                "sa" to sa,
+                "dom" to dom
+            )
+
+            db.collection("actividades").add(tarea).addOnSuccessListener {
+                documentReference -> Log.d(TAG,"DocumentSnapshot added with ID: ${documentReference.id}")
+            }
+                .addOnFailureListener { e -> Log.w(TAG,"Error adding document",e) }
             homeFragment.tasks.add(task)
 
-            Toast.makeText(root.context,"New task added",Toast.LENGTH_SHORT).show()
+            Toast.makeText(root.context, "New task added", Toast.LENGTH_SHORT).show()
         }
 
         return root
